@@ -12,24 +12,21 @@ class _InputPageState extends State<InputPage> {
 
 
   double _currentSliderValue = 20;
-   Color malecardcolor= Color(0xFF4B4E84);
-   Color femalecardcolor= Color(0xFF1D1E33);
-   int height ;
-   int weight ;
-   int age =10;
-   int h;
-   int w;
-  void updatecardcolor(int gender){
-    if(gender==1){
-      femalecardcolor= Color(0xFF4B4E84);
-    }
-    else{
-      malecardcolor=femalecardcolor;
-    }
+  Color malecardcolor = Color(0xFF4B4E84);
+  Color femalecardcolor = Color(0xFF1D1E33);
+  int height = 120;
 
+  int weight = 60;
+  int age = 14;
+  double h;
+
+  void updatecardcolor(int gender) {
+    if (gender == 1) {
+      femalecardcolor = Color(0xFF4B4E84);
+    } else {
+      malecardcolor = femalecardcolor;
+    }
   }
-
-  _InputPageState({this.height,this.weight });
 
   @override
   Widget build(BuildContext context) {
@@ -151,15 +148,15 @@ class _InputPageState extends State<InputPage> {
                     ),
                     Flexible(
                       child: Slider(
-                          value: height.toDouble(),
-                          min: 10,
-                          max: 120,
-                          label: _currentSliderValue.round().toString(),
-                          onChanged: (double newvalue){
-                            setState(() {
-                              height=newvalue.toInt();
-                            });
-                          },
+                        value: height.toDouble(),
+                        min: 120,
+                        max: 190,
+                        label: _currentSliderValue.round().toString(),
+                        onChanged: (double newvalue) {
+                          setState(() {
+                            height = newvalue.round();
+                          });
+                        },
                         ),
                     ),
                   ],
@@ -330,7 +327,8 @@ class _InputPageState extends State<InputPage> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Second_page()),
+                  MaterialPageRoute(
+                      builder: (context) => Second_page(height, weight)),
                 );
               },
 
@@ -392,7 +390,3 @@ class reusableWIdget extends StatelessWidget {
     );
   }
 }
-
-
-
-
